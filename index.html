@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amit Kumar Yadav • Portfolio</title>
+  <meta name="description" content="Senior DevOps Engineer portfolio of Amit Kumar Yadav – projects, skills, and contact." />
+  <meta property="og:title" content="Amit Kumar Yadav • Portfolio" />
+  <meta property="og:description" content="Senior DevOps Engineer portfolio – DevOps, SRE, Cloud, Terraform, GCP projects." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+  <style>
+    :root {
+      --bg: #0b1020;        /* deep navy */
+      --panel: #0f172a;     /* slate-900 */
+      --text: #e5e7eb;      /* zinc-200 */
+      --muted: #94a3b8;     /* slate-400 */
+      --brand: #0ea5e9;     /* sky-500 */
+      --accent: #22d3ee;    /* cyan-400 */
+      --ring: #38bdf8;      /* sky-400 */
+      --card: #111827;      /* gray-900 */
+      --code: #0a0f1f;
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+      --radius: 16px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #f8fafc; --panel: #ffffff; --text: #0f172a; --muted: #475569; --card: #ffffff; --code:#f1f5f9; }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(34,211,238,0.08), transparent 60%),
+                  radial-gradient(800px 400px at 90% 10%, rgba(14,165,233,0.10), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+      letter-spacing: 0.2px;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header { position: sticky; top: 0; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid rgba(148,163,184,0.18); z-index: 50; }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 12px 24px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight: 700; letter-spacing: 0.5px; }
+    .brand .logo { width: 36px; height: 36px; border-radius: 10px; display:grid; place-items:center; background: linear-gradient(135deg, var(--brand), var(--accent)); color:white; box-shadow: var(--shadow); font-weight:800; }
+    .nav a { color: var(--text); text-decoration:none; opacity:0.9; font-weight:600; }
+    .links { display:flex; gap: 18px; align-items:center; }
+    .btn { padding: 10px 14px; border-radius: 999px; background: color-mix(in oklab, var(--brand) 92%, black 8%); color:white; border: 1px solid rgba(56,189,248,0.35); box-shadow: var(--shadow); font-weight:700; }
+    .btn:hover { transform: translateY(-1px); }
+    .ghost { background: transparent; color: var(--text); border: 1px solid rgba(148,163,184,0.3); box-shadow:none; }
+
+    .hero { display:grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items:center; padding: 48px 24px 12px; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding-top: 28px; } }
+    h1 { font-size: clamp(28px, 6vw, 52px); line-height: 1.1; margin: 0 0 12px; letter-spacing: -0.5px; }
+    .sub { font-size: clamp(16px, 2.5vw, 19px); color: var(--muted); margin: 6px 0 22px; }
+    .chip { display:inline-flex; align-items:center; gap:8px; padding: 8px 12px; border-radius:999px; border: 1px solid rgba(148,163,184,0.25); background: color-mix(in oklab, var(--panel) 85%, transparent); }
+    .grid { display:grid; gap: 18px; }
+
+    .card { background: var(--card); border:1px solid rgba(148,163,184,0.18); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .card h3 { margin-top: 0; letter-spacing: -0.2px; }
+    .card p { margin: 8px 0 0; color: var(--muted); }
+
+    .section { padding: 22px 24px; }
+    .section h2 { font-size: 24px; letter-spacing: -0.2px; margin: 0 0 12px; }
+
+    .projects { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+    @media (max-width: 1000px) { .projects { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 650px) { .projects { grid-template-columns: 1fr; } }
+    .project { display:flex; flex-direction:column; gap:10px; opacity: 0; }
+    .project .meta { display:flex; justify-content:space-between; align-items:center; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { font-size: 12px; padding: 6px 10px; border-radius:999px; border:1px solid rgba(148,163,184,0.25); color: var(--muted); }
+
+    .skills { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+    @media (max-width: 900px) { .skills { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+
+    .footer { padding: 24px; text-align:center; color: var(--muted); border-top: 1px solid rgba(148,163,184,0.18); margin-top: 24px; }
+
+    .kpis { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+    @media (max-width: 900px) { .kpis { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    .kpi { text-align:center; padding: 18px; border-radius: var(--radius); background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 88%, transparent), transparent); border:1px solid rgba(148,163,184,0.18); }
+    .kpi .num { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; opacity: 0; }
+    .kpi .label { color: var(--muted); font-size: 13px; }
+
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    pre { background: var(--code); padding: 14px; border-radius: 12px; overflow:auto; border:1px solid rgba(148,163,184,0.18); }
+
+    .social { display:flex; gap: 12px; }
+    .social a { padding: 10px 12px; border-radius: 10px; border:1px solid rgba(148,163,184,0.25); display:inline-flex; align-items:center; gap:8px; color: var(--text); text-decoration:none; }
+
+    .theme-toggle { cursor:pointer; border-radius: 12px; padding: 8px 10px; border:1px solid rgba(148,163,184,0.25); background: transparent; color: var(--text); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">AY</div>
+        <a href="#">Amit Yadav</a>
+      </div>
+      <nav class="links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="theme-toggle" title="Toggle theme">🌙</button>
+        <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="chip">🚀 Senior DevOps • SRE • GCP</span>
+        <h1 id="heroTitle">Hi, I'm Amit — I build resilient, scalable platforms.</h1>
+        <p class="sub">Senior DevOps Engineer experienced with Kubernetes, Docker, Terraform, GCP, and CI/CD. I automate infrastructure, harden systems, and keep deployments boringly reliable.</p>
+        <div class="social">
+          <a href="https://github.com/" target="_blank" rel="noopener">🧑‍💻 GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a href="mailto:you@example.com">✉️ Email</a>
+          <a href="#contact" class="btn ghost">Download Résumé</a>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="kpis">
+          <div class="kpi"><div class="num" id="kpi1">99.99%</div><div class="label">Uptime Achieved</div></div>
+          <div class="kpi"><div class="num" id="kpi2">200k+</div><div class="label">Daily Users Supported</div></div>
+          <div class="kpi"><div class="num" id="kpi3">~15m</div><div class="label">Faster Deploys</div></div>
+          <div class="kpi"><div class="num" id="kpi4">$120k</div><div class="label">Cloud Cost Saved</div></div>
+        </div>
+        <div class="card">
+          <h3>Current Focus</h3>
+          <p>• Production-grade Terraform modules • GKE multi-cluster setup • GitHub Actions hardening • Observability with Prometheus/Loki/Grafana</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Featured Projects</h2>
+      <div class="projects" id="projectsGrid"></div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="card"><strong>Cloud</strong><p>GCP (GKE, GCE, Cloud Run), AWS (EKS, EC2)</p></div>
+        <div class="card"><strong>IaC</strong><p>Terraform, Helm, Kustomize</p></div>
+        <div class="card"><strong>Containers</strong><p>Docker, Kubernetes, ArgoCD</p></div>
+        <div class="card"><strong>CI/CD</strong><p>GitHub Actions, GitLab CI, Cloud Build</p></div>
+        <div class="card"><strong>Observability</strong><p>Prometheus, Grafana, Loki, OpenTelemetry</p></div>
+        <div class="card"><strong>Scripting</strong><p>Bash, Python, Go (basics)</p></div>
+        <div class="card"><strong>Security</strong><p>SAST/DAST, Trivy, OPA, Secrets Mgmt</p></div>
+        <div class="card"><strong>Databases</strong><p>PostgreSQL, BigQuery, Redis, MongoDB</p></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Want to collaborate or have an opportunity? Email me at <a href="mailto:you@example.com">you@example.com</a> or use the form below.</p>
+        <form action="https://formspree.io/f/your-id" method="POST" style="display:grid; gap:10px;">
+          <input required name="name" placeholder="Your name" style="padding:12px;border-radius:12px;border:1px solid rgba(148,163,184,0.35);background:transparent;color:var(--text)">
+          <input required type="email" name="email" placeholder="Email" style="padding:12px;border-radius:12px;border:1px solid rgba(148,163,184,0.35);background:transparent;color:var(--text)">
+          <textarea required name="message" placeholder="Your message" rows="4" style="padding:12px;border-radius:12px;border:1px solid rgba(148,163,184,0.35);background:transparent;color:var(--text)"></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>About</h2>
+      <div class="card">
+        <p>I'm a Senior DevOps Engineer with experience at UKG and TCS. I care about reliability, developer experience, and cost efficiency. Outside work, I explore ways to teach cloud-native concepts with simple, practical examples.</p>
+        <pre><code># Favorite one-liner
+alias deploy="kubectl rollout restart deployment/myapp -n prod"</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> Amit Kumar Yadav • Built with ♥ and GitHub Pages
+  </footer>
+
+  <script>
+    // --- Data: edit this to customize your portfolio ---
+    const PROJECTS = [
+      {
+        title: "GKE Multi-Cluster Platform",
+        blurb: "Production-ready reference architecture with GitOps (ArgoCD), workload identity, and multi-tenant namespaces.",
+        link: "https://github.com/yourname/gke-platform",
+        tags: ["GCP", "GKE", "GitOps", "ArgoCD", "Terraform"]
+      },
+      {
+        title: "Terraform Modules: GCP",
+        blurb: "Reusable, opinionated modules for VPC, GKE, Cloud SQL, and Cloud Run with examples and tests.",
+        link: "https://github.com/yourname/tf-gcp-modules",
+        tags: ["Terraform", "GCP", "IaC"]
+      },
+      {
+        title: "Observability Stack",
+        blurb: "Prometheus, Loki, Grafana with sane defaults, dashboards, and alerts wired for Kubernetes.",
+        link: "https://github.com/yourname/observability",
+        tags: ["Kubernetes", "Grafana", "Loki", "Prometheus"]
+      },
+      {
+        title: "GitHub Actions Hardening",
+        blurb: "Secure workflow templates with OIDC to GCP, artifact signing, reusable workflows, and policy checks.
